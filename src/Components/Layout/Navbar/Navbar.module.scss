@@ -1,0 +1,52 @@
+@import '../../../styles/color.module';
+@import '../../../styles/breakpoints.module';
+
+.container{
+    position: sticky;
+    display: block;
+    height: 4vh;
+    
+    margin-top: 4vh;
+    margin-inline: auto;
+    color: $color6;
+
+    @include breakpoint(small){
+        max-width: 900px;
+    }
+   
+
+
+    .navItems{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding-inline: 2rem;
+        background-color: $font-color5;
+
+        .logo{
+            //width: fit-content;
+            display: flex;
+            align-self: center;
+            align-items:center;
+            font-weight: 600;
+            font-size: clamp(15px, 2rem, 1.5vw);
+            
+            margin-bottom: 3px;
+
+            .logoIcon{
+                margin-top: -5px;
+                font-size:medium;
+            }
+
+            h6{
+                text-transform: uppercase;
+                padding: 3px;
+                margin-left: 3px;
+                
+            }
+           
+        }
+
+    }
+}
