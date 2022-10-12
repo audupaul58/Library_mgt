@@ -1,54 +1,48 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+import styles from './Login.module.scss';
 import Modal from 'react-bootstrap/Modal';
+import {useForm} from 'react-hook-form'
 
-function Example() {
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+const LoginDia = () => {
 
-  const [username, setUsername] = useState('');
-  const [password, serPassword] = useState('');
+    const [show, setShow] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const { register, handleSubmit, formState: { errors }, } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data)
+        setShow(!show)
+    }
+
     
-  }
 
-
+    const handleClose = () => setShow(!show);
+    const handleShow = () => setShow(true);
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
+    <div className={styles.toggler} onClick={handleShow}>
+        <button><strong>Login</strong></button>
+    </div>
 
-      <Modal show={show} onHide={handleClose} animation={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <form >
-          <input type='text' placeholder='Username'/>
-          <input type='password' placeholder='Password'/>
-            <div>
-            <button>cancel</button>
-            <button>submit</button>
-            </div>
-        </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
+    <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal.Header closeButton>
+        <Modal.Title>Login</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.logForm}>
+      <input type="email" placeholder='Username' {...register("email", { required: true })} />
+      {errors.email && <span style={{ color: "red" }}>
+       *Email* is mandatory </span>}
+      <input type="password" placeholder='Password' {...register("password")} />
+      <input type={"submit"} style={{ backgroundColor: "#a1eafb" }} />
+    </form>
+      </Modal.Body>
+      
+    </Modal>
+  </>
+  )
 }
 
-render(<Example />);
+export default LoginDia

@@ -1,0 +1,22 @@
+.toggler{
+    button{
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        
+    }
+}
+
+.logForm{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2vh;
+
+    input{
+        background-color: rgb(216, 213, 213);
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+    }
+}

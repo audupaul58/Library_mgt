@@ -3,6 +3,7 @@ import styles from './Navbar.module.scss'
 import {SiLibrarything} from 'react-icons/si';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import LoginDia from '../Login/Login.js';
 
 const MyNavbar = () => {
   return (
@@ -14,7 +15,7 @@ const MyNavbar = () => {
         <SiLibrarything className={styles.logoIcon}/><h6>LIBRARY MANAGEMENT SYSTEM</h6>
       </div>
       <div className={styles.login}>
-           <p>Login</p>
+           <LoginDia/>
       </div>
       </Container>
     </Navbar>
